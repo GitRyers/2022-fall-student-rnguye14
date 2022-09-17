@@ -24,7 +24,7 @@ int main() {
   printf("Welcome to the Vending Machine!\n");
   printf("Enter your choice by # and input cash amount, repeatedly (^d to end).\n");
   printf("[0] %d cola left: cost is $%.2f\n", num_cola, price_cola);
-  printf("[1] %d candy bars left: cost is $%.2f\n", num_bar, price_bar);
+  printf("[1] %d candybars left: cost is $%.2f\n", num_bar, price_bar);
   printf("[2] %d popcorn left: cost is $%.2f\n", num_pop, price_pop);
   printf("Money made so far is $0.00\n");
   
@@ -42,7 +42,7 @@ int main() {
 	if (num_cola < 1) {
 	  printf("invalid item\n");
 	  return 2;
-	  break; 
+	  break;
 	}
 	//Check if pay is enough
 	if (pay < price_cola) {
@@ -103,18 +103,19 @@ int main() {
     
     //Lists Menu and Profit
     printf("[0] %d cola left: cost is $%.2f\n", num_cola, price_cola);
-    printf("[1] %d candy bar left: cost is $%.2f\n", num_bar, price_bar);
+    printf("[1] %d candybar left: cost is $%.2f\n", num_bar, price_bar);
     printf("[2] %d popcorn left: cost is $%.2f\n", num_pop, price_pop);
     printf("Money made so far is $%.2f\n", profit);
    }
 
-  //Checks for valid # of inputs 
+  //Checks for program exit and valid # of inputs 
+  if (input == EOF) {
+    printf("Thanks for your patronage!\n");
+    return 0;
+  }
   if (input != 2) {
     printf("malformed expression\n");
     return 1;
-  }
-  else {
-    printf("Thanks for your patronage!\n");
   }
   
   return 0;
