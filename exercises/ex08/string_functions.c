@@ -6,9 +6,7 @@ int concat(const char word1[], const char word2[], char result[], int result_cap
 
    //TODO: replace the following stub with a correct function body so that
    //      this function behaves as indicated in the comment above
-  int length = strlen(word1) + strlen(word2) + 1;
-
-  printf("This is the length: %d\n", length); 
+  int length = strlen(word1) + strlen(word2) + 1;  
   
   if (length > result_capacity) {
     return 1;
