@@ -84,42 +84,205 @@ void test_file_eq() {
 
 
 void test_populate_grid(){
+  FILE* fptr = fopen("test1.txt", "r");
+  printf("this\nis\na test\n");
+  char grid[MAX_SIZE][MAX_SIZE];
+  int n = populate_grid(grid, "test1.txt");
+  char ch; 
+  while ((ch = fgetc(fptr)) != EOF) {
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (ch != grid[i][j]) {
+          printf("Grid does not match file.\n"); 
+        }
+      }
+    }
+  }
+  fclose(fptr);
 
-  assert(1);  //replace this stub!
+  fptr = fopen("test2.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test2.txt");
+  while ((ch = fgetc(fptr)) != EOF) {
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (ch != grid[i][j]) {
+          printf("Grid does not match file.\n");
+        }
+      }
+    }
+  }
+  fclose(fptr);
 
+  fptr = fopen("test3.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test3.txt");
+  while ((ch = fgetc(fptr)) != EOF) {
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (ch != grid[i][j]) {
+          printf("Grid does not match file.\n");
+        }
+      }
+    }
+  }
+  fclose(fptr);
 }
 
 
 void test_find_right(){
+  FILE* fptr = fopen("test1.txt", "r");
+  printf("this\nis\na test\n");
+  char grid[MAX_SIZE][MAX_SIZE];
+  int n = populate_grid(grid, "test1.txt");
+  char word[] = "top";  
+  find_right(grid, n, word, stdout);
+  char output[] = "top - Not Found\n"; 
+  if (scanf("%s", output)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
-  assert(1);  //replace this stub!
+  fptr = fopen("test2.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test2.txt");
+  char word2[] = "effgo";  
+  find_right(grid, n, word2, stdout);
+  char output2[] = "effgo - Not Found\n"; 
+  if (scanf("%s", output2)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
+  fptr = fopen("test3.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test3.txt");
+  char word3[] = "poooooooop";  
+  find_right(grid, n, word3, stdout);
+  char output3[] = "poooooooop - Not Found\n"; 
+  if (scanf("%s", output3)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 }
 
 
 void test_find_left(){
 
-  assert(1);  //replace this stub!
+  FILE* fptr = fopen("test1.txt", "r");
+  printf("this\nis\na test\n");
+  char grid[MAX_SIZE][MAX_SIZE];
+  int n = populate_grid(grid, "test1.txt");
+  char word[] = "pot";  
+  find_left(grid, n, word, stdout);
+  char output[] = "pot - Not Found\n"; 
+  if (scanf("%s", output)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
+
+  fptr = fopen("test2.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test2.txt");
+  char word2[] = "ogffe";  
+  find_left(grid, n, word2, stdout);
+  char output2[] = "ogffe - Not Found\n"; 
+  if (scanf("%s", output2)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
+
+  fptr = fopen("test3.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test3.txt");
+  char word3[] = "poooooooop";  
+  find_left(grid, n, word3, stdout);
+  char output3[] = "poooooooop - Not Found\n"; 
+  if (scanf("%s", output3)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 }
 
 
 void test_find_down(){
+  FILE* fptr = fopen("test1.txt", "r");
+  printf("this\nis\na test\n");
+  char grid[MAX_SIZE][MAX_SIZE];
+  int n = populate_grid(grid, "test1.txt");
+  char word[] = "key";  
+  find_down(grid, n, word, stdout);
+  char output[] = "key - Not Found\n"; 
+  if (scanf("%s", output)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
-  assert(1);  //replace this stub!
+  fptr = fopen("test2.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test2.txt");
+  char word2[] = "qesso";  
+  find_down(grid, n, word2, stdout);
+  char output2[] = "qesso - Not Found\n"; 
+  if (scanf("%s", output2)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
+  fptr = fopen("test3.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test3.txt");
+  char word3[] = "poooooooop";  
+  find_down(grid, n, word3, stdout);
+  char output3[] = "poooooooop - Not Found\n"; 
+  if (scanf("%s", output3)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 }
 
 
 void test_find_up(){
+  FILE* fptr = fopen("test1.txt", "r");
+  printf("this\nis\na test\n");
+  char grid[MAX_SIZE][MAX_SIZE];
+  int n = populate_grid(grid, "test1.txt");
+  char word[] = "yek";  
+  find_up(grid, n, word, stdout);
+  char output[] = "yek - Not Found\n"; 
+  if (scanf("%s", output)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
-  assert(1);  //replace this stub!
+  fptr = fopen("test2.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test2.txt");
+  char word2[] = "osseq";  
+  find_down(grid, n, word2, stdout);
+  char output2[] = "osseq - Not Found\n"; 
+  if (scanf("%s", output2)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 
+  fptr = fopen("test3.txt", "r");
+  printf("this\nis\na test\n");
+  n = populate_grid(grid, "test3.txt");
+  char word3[] = "poooooooop";  
+  find_down(grid, n, word3, stdout);
+  char output3[] = "poooooooop - Not Found\n"; 
+  if (scanf("%s", output3)) {
+    printf("Could not find search word.\n"); 
+  } 
+  fclose(fptr); 
 }
 
 
 void test_find_all(){
-
-  assert(1);  //replace this stub!
-
+  test_find_right();
+  test_find_left();
+  test_find_down();
+  test_find_up(); 
 }
 
