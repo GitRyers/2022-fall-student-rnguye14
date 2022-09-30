@@ -29,7 +29,8 @@
  */
 int populate_grid(char grid[][MAX_SIZE], char filename_to_read_from[]); 
 
-
+void strlower(char *str); 
+void strrev(char *str); 
 /*
  * Each of these 4 functions returns the number of times the given 
  * word string was found in the grid facing the direction indicated
@@ -39,7 +40,7 @@ int populate_grid(char grid[][MAX_SIZE], char filename_to_read_from[]);
  * must appear in order of the first character's appearance in a 
  * left-to-right scan of each row beginning with row 0.
  */
-int find_right(char grid[][MAX_SIZE], int n, char word[], FILE *write_to); 
+int find_right(char grid[][MAX_SIZE], int n, char word[], FILE *write_to);
 int find_left (char grid[][MAX_SIZE], int n, char word[], FILE *write_to); 
 int find_down (char grid[][MAX_SIZE], int n, char word[], FILE *write_to); 
 int find_up   (char grid[][MAX_SIZE], int n, char word[], FILE *write_to); 
