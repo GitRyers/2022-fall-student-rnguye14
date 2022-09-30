@@ -1,9 +1,13 @@
 CC=gcc
 CFLAGS= -std=c99 -pedantic -Wall -Wextra
 
-#Linking Files
-word_search: word_search.o search_functions.o test_search_functions.o
-	$(CC) -o word_search word_search.o search_functions.o test_search_functions.o
+#Linking word_search and search_functions
+word_search: word_search.o search_functions.o 
+	$(CC) -o word_search word_search.o search_functions.o 
+
+#Linking test_search_functions
+test_search_functions: test_search_functions.o
+	$(CC) -o test_search_functions test_search_functions.o 
 
 #Compiles word_search.c to word_search.o
 word_search.o: word_search.c search_functions.h
