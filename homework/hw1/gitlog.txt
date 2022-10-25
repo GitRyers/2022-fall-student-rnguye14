@@ -1,0 +1,47 @@
+commit 46994fc35092fe187ec34c6a25255ed7ac39dc17
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 9 16:18:05 2022 -0400
+
+    ex05 count2 working version
+
+commit 0fe92bccbbf9c8228b4b190a50d2d040a4dd8bd8
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 9 16:08:14 2022 -0400
+
+    ex05 count1 working version
+
+commit b0216de51da463557a0febbd22fe2cc5c2dd094e
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:38:56 2022 -0400
+
+    created hw0.zip
+
+commit cfddb8941309c7e67d677378a3f2d62b5d9b4e29
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:26:13 2022 -0400
+
+    created three.c
+
+commit 1f8e76aa2f5c509fb01af6c59d5335bce7773c57
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:25:41 2022 -0400
+
+    created two.c
+
+commit 805d728a513239fdd227c85de3724e4dc478a64e
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:24:40 2022 -0400
+
+    created one.c
+
+commit 73d0541f452fcb53c332dd9e459ebdc16b0f9009
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 5 16:13:54 2022 -0400
+
+    updated README
+
+commit 2dcef51f93e6ec57aa43c5a65c9e006a2307eb55
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 5 16:10:44 2022 -0400
+
+    created README
