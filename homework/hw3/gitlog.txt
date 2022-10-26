@@ -1,0 +1,267 @@
+commit 41c2f13442518c25219da8073717649c737f046f
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:58:15 2022 -0400
+
+    finalized
+
+commit 07919a4e2e68234c8b8d4c4c398b74430a6ce5d8
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:57:59 2022 -0400
+
+    finalized
+
+commit 2e02730cbd8e944550cc905d1efae960b51a97f6
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:57:39 2022 -0400
+
+    finalized search_functions.h
+
+commit 0f42f38dca7783910b747cd5a44a52f438769550
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:57:06 2022 -0400
+
+    finalized
+
+commit 905f7636d3f0adb80feb22a6fbcd4197366b77db
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:56:35 2022 -0400
+
+    finalized Makefile
+
+commit 297412fedb98f34189fd7da4b75baa5f09ca19a6
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:56:09 2022 -0400
+
+    created test3.txt
+
+commit d8b9691bda032f2d0d160a8383be96490b6271ad
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:55:51 2022 -0400
+
+    created test2.txt
+
+commit eefee73ff6b9e063ce03cfc2134bc883e1b75173
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 29 22:55:27 2022 -0400
+
+    created test1
+
+commit baa2eb383e2b366578095ac1b28cf4421eb3679b
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:14:14 2022 -0400
+
+    created search_functions.h
+
+commit ee9c37a0743059c0555aab7f759187388ef3e974
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:13:37 2022 -0400
+
+    created test_search_functions.c
+
+commit 63e070e4e31002aa77c148ed0aead4f96f21537e
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:13:05 2022 -0400
+
+    edited word_search.c
+
+commit 40b8516cac4a3ff35d7eaec79acf7bbafaa48b40
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:10:23 2022 -0400
+
+    edited string_functions.c
+
+commit f62220edde813e6abdaf98dd236215c3ac20cf9a
+Merge: 8c78a88 57abc71
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:08:19 2022 -0400
+
+    Merge branch 'main' of https://github.com/GitRyers/2022-fall-student-rnguye14
+    Edited Makefile for ex08 and integrate changes from local to browser repository
+
+commit 8c78a888484dbfab6cafd33f59481c0ac686e311
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:07:16 2022 -0400
+
+    edited Makefile
+
+commit 16950a7f03331761b9b001df49b29b8a0c0f41cd
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 22:05:32 2022 -0400
+
+    created Makefile
+
+commit 57abc71dec4d9631eac3805f9eb75cb69e881e26
+Author: GitRyers <112345567+GitRyers@users.noreply.github.com>
+Date:   Mon Sep 26 21:54:01 2022 -0400
+
+    Updated Makefile
+
+commit 6710b6fd50f39e80a2abf1a1699583b1f9c9bd7f
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 18:37:50 2022 -0400
+
+    learned pointers after finalizing passing.c
+
+commit b69b3b4741c883575b8a57e14dfa073d1ed7f92a
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 18:23:38 2022 -0400
+
+    used gdb to correct transpose.c
+
+commit f88774eb1acc9c0c39eb693ea349abcfd86c3d5a
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 26 18:12:03 2022 -0400
+
+    finalized ex08
+
+commit 7c623539d5977fa9a350a56858c42354d3fe04d4
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 16:03:57 2022 -0400
+
+    finalized all_in_one.c
+
+commit 37eabc1c00608d0b2ca0fd63c351adaf6c8d5d8c
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:45:50 2022 -0400
+
+    finalized functions.c
+
+commit beccc7ecbcd03d1066b5ed8e8e4f1455043b97a1
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:34:15 2022 -0400
+
+    completed compound.c
+
+commit cbb3455aece22b0253d56da418c2b6d4e7df45ed
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:32:32 2022 -0400
+
+    completed ex05
+
+commit 33e2147df2c076ad803a1cb1909b0e636d85e555
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:30:51 2022 -0400
+
+    created a.out
+
+commit 9b7eb36e7cc3decac36ada65d4f8ff998caf9dc0
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:25:46 2022 -0400
+
+    finalized hw1 and hw1.zip
+
+commit 7334a6934fe18fc2a35d8af475309ba6519756c2
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Sun Sep 25 15:23:58 2022 -0400
+
+    added search_functions.c
+
+commit fff55a41060b70ce4928e912ff5b5bbf5140fb43
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 21:53:58 2022 -0400
+
+    finalized hw1.c
+
+commit 5ac5c0bc27623b1237d1e5ee13ef1cd7388ebcca
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:19:41 2022 -0400
+
+    added new hw1.zip with updated gitlog.txt
+
+commit eb586af992f422c5b846a6b119a6dc156d3b9b11
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:18:00 2022 -0400
+
+    compiled and ran hw1.c
+
+commit 4069b6331a4c96fd5cde773df1dc34abdb632ed4
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:16:26 2022 -0400
+
+    created hw1.zip
+
+commit e7479e8871c6b2f9f2878b0577babf37f41e1714
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:15:50 2022 -0400
+
+    created hw1.c
+
+commit fe5bd37aeec847d6fdab90a3ccfe298a1e9cb9cb
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:15:14 2022 -0400
+
+    modified gpa_simple.c
+
+commit 2ff7a7b04839aa3f3740e2bdc004feac0f243a48
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:14:32 2022 -0400
+
+    created three.c
+
+commit 8d8475f0509c15e9dd02cbf70f46a60168f93579
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 16 17:13:52 2022 -0400
+
+    created hw0.zip
+
+commit bd89f497e142da0e9055606fbdc1ecb2ea34300b
+Merge: 46994fc 99a091b
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 15 21:42:10 2022 -0400
+
+    Merge branch 'main' of https://github.com/GitRyers/2022-fall-student-rnguye14
+    Stuff was out of date
+
+commit 46994fc35092fe187ec34c6a25255ed7ac39dc17
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 9 16:18:05 2022 -0400
+
+    ex05 count2 working version
+
+commit 99a091b09fb37b4afbbe741c9891acd9e04dc635
+Author: GitRyers <112345567+GitRyers@users.noreply.github.com>
+Date:   Fri Sep 9 16:10:09 2022 -0400
+
+    Delete count1
+
+commit 0fe92bccbbf9c8228b4b190a50d2d040a4dd8bd8
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Fri Sep 9 16:08:14 2022 -0400
+
+    ex05 count1 working version
+
+commit b0216de51da463557a0febbd22fe2cc5c2dd094e
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:38:56 2022 -0400
+
+    created hw0.zip
+
+commit cfddb8941309c7e67d677378a3f2d62b5d9b4e29
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:26:13 2022 -0400
+
+    created three.c
+
+commit 1f8e76aa2f5c509fb01af6c59d5335bce7773c57
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:25:41 2022 -0400
+
+    created two.c
+
+commit 805d728a513239fdd227c85de3724e4dc478a64e
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Thu Sep 8 22:24:40 2022 -0400
+
+    created one.c
+
+commit 73d0541f452fcb53c332dd9e459ebdc16b0f9009
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 5 16:13:54 2022 -0400
+
+    updated README
+
+commit 2dcef51f93e6ec57aa43c5a65c9e006a2307eb55
+Author: Ryan Nguyen <rnguye14@jh.edu>
+Date:   Mon Sep 5 16:10:44 2022 -0400
+
+    created README
