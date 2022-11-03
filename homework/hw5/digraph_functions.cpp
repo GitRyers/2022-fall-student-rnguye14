@@ -19,6 +19,41 @@ using std::pair;
 using std::ifstream; 
 using std::stringstream; 
 
+//Helper functions 
+string lower_string(string word) {
+    //Initializes lowered string variable
+    string ret_word; 
+
+    //Iterates through each letter of parameter word
+    for (size_t i = 0; i < word.size(); i++) {
+        if ((word[i] != '.') && (word[i] != ',') && (word[i] != '?') && (word[i] != '!')) { //Detects if word has puncutation
+            ret_word += tolower(word[i]); //Adds lowered character to return string
+        }
+    }
+    return ret_word; 
+}
+
+bool cmp_entries(pair<string, vector<string>> a, pair<string, vector<string>> b) {
+    //Sees if number of counts in a are larger than b
+    if (a.second.size() > b.second.size()) {return true;}
+
+    //Sees if number of counts in a are larger than b
+    if (a.second.size() < b.second.size()) {return false;}
+
+    //Returns if a is less than b based on ascii order
+    return a.first < b.first; 
+}
+
+bool isnum_word(string word) {
+    for (size_t i = 0; i < word.size(); i++) {
+        if (!isdigit(word[i])) {
+            return false;
+        }
+    }
+    return true; 
+}
+
+//Main code functions
 vector<string> init_graphs(std::istream& in) {
     //Initializes vector
     vector<string> graph_vec;
@@ -61,14 +96,9 @@ map<string, vector<string>> find_graphs(std::istream& in, vector<string> graph_v
         while(ss >> word) {
             //Reads in each word from line and checks for digraphs/trigraphs
             for (map<string, vector<string>>::iterator mit = graph_map.begin(); mit != graph_map.end(); ++mit) {
-                if (word.find(mit->first) != std::string::npos) {
+                if (word.find(mit->first) != std::string::npos) { 
                     //Converts each character to lowercase without punctuation
-                    string ret_word; 
-                    for (size_t i = 0; i < word.size(); i++) {
-                        if ((word[i] != '.') && (word[i] != ',') && (word[i] != '?') && (word[i] != '!')) {
-                            ret_word += tolower(word[i]);
-                        }
-                    }
+                    string ret_word = lower_string(word); 
                     mit->second.push_back(ret_word);                 
                 }     
             } 
@@ -77,82 +107,62 @@ map<string, vector<string>> find_graphs(std::istream& in, vector<string> graph_v
     return graph_map; 
 }
 
-void print_ascii(map<string, vector<string>> graph_map) {
-    //Iterates through each map entry
-    for (map<string, vector<string>>::const_iterator cmit = graph_map.cbegin(); cmit != graph_map.cend(); ++cmit) {
-        //Prints key
-        cout << cmit->first << ": ["; 
-        unsigned int count = 0; //Keeps track of number of entries
-        for (vector<string>::const_iterator cvit = cmit->second.cbegin(); cvit != cmit->second.cend(); ++cvit) {
-            count++; 
-            if (count != cmit->second.size()) { //For every entry but the last, a comma and space is printed after the word
-                cout << *cvit << ", "; 
-            }
-            else {
-                cout << *cvit; //Final word is printed without comma nor space
-            }
+void print_entry(std::map<std::string, std::vector<std::string>> graph_map, std::string key) {
+    cout << key << ": ["; //Prints digraph/trigraph and start of bracket
+    unsigned int count = 0; //Keeps track of number of entries
+    for (vector<string>::const_iterator cvit = graph_map[key].cbegin(); cvit != graph_map[key].cend(); ++cvit) {
+        count++; 
+        if (count != graph_map[key].size()) { //For every entry but the last, a comma and space is printed after the word
+            cout << *cvit << ", "; 
         }
-        cout << "]" << endl; //Prints final bracket and new line character
+        else {
+            cout << *cvit; //Final word is printed without comma nor space
+        }
+    }
+    cout << "]" << endl; //Prints final bracket and new line character
+}
+
+void print_ascii(map<string, vector<string>> graph_map) {
+    //Iterates through each map entry, which is already in ASCII order
+    for (map<string, vector<string>>::const_iterator cmit = graph_map.cbegin(); cmit != graph_map.cend(); ++cmit) { 
+        print_entry(graph_map, cmit->first); //Prints each entry
     }
 }
 
 void print_rev(map<string, vector<string>> graph_map) {
     //Iterates through map in reverse order
     for (map<string, vector<string>>::const_reverse_iterator crmit = graph_map.crbegin(); crmit != graph_map.crend(); ++crmit) {
-        //Prints digraph/trigraph
-        cout << crmit->first << ": ["; 
-        unsigned int count = 0; //Counts number of entries 
-        for (vector<string>::const_iterator cvit = crmit->second.cbegin(); cvit != crmit->second.cend(); ++cvit) {
-            count++; 
-            if (count != crmit->second.size()) { //Every word but the last is printed with a comma and space after the container word
-                cout << *cvit << ", "; 
-            }
-            else {
-                cout << *cvit; //Final container word is printed without a comma nor space
-            }
-        }
-        cout << "]" << endl; //Ends digraph/trigraph with a bracket and newline
+        print_entry(graph_map, crmit->first); //Prints each entry
     }
-}
-
-bool cmp_str(std::string a, std::string b) {
-    //Sees if string a is larger than string b
-    if (a.size() > b.size()) {
-        return true; 
-    }
-
-    //Sees if string b is larger than string a
-    if (a.size() < b.size()) {
-        return false; 
-    }
-
-    //Returns if a is less than b based on ascii order
-    return a < b; 
 }
 
 void print_count(map<string, vector<string>> graph_map) {
-    //Initializes vector of digraphs 
-    vector<string> keys; 
+    //Initializes vector of digraph counts
+    vector<pair<string, vector<string>>> vals; 
     for (map<string, vector<string>>::const_iterator cmit = graph_map.cbegin(); cmit != graph_map.cend(); ++cmit) {
-        keys.push_back(cmit->first); 
+        vals.push_back(*cmit); 
     }
 
     //Sorts digraphs 
-    sort(keys.begin(), keys.end(), cmp_str); 
+    sort(vals.begin(), vals.end(), cmp_entries); 
 
     //Iterates through sorted digraph vector
-    for (vector<string>::const_iterator cvit1 = keys.cbegin(); cvit1 != keys.cend(); ++cvit1) {
-        cout << *cvit1 << ": ["; 
-        unsigned int count = 0; //Counts number of entries 
-        for (vector<string>::const_iterator cvit2 = graph_map[*cvit1].cbegin(); cvit2 != graph_map[*cvit1].cend(); ++cvit2) {
-            count++; 
-            if (count != graph_map[*cvit1].size()) { //Every word but the last is printed with a comma and space after the container word
-                cout << *cvit2 << ", "; 
-            }
-            else {
-                cout << *cvit2; //Final container word is printed without a comma nor space
-            }
-        }
-        cout << "]" << endl; //Ends digraph/trigraph with a bracket and newline       
+    for (vector<pair<string, vector<string>>>::const_iterator cvit = vals.cbegin(); cvit != vals.cend(); ++cvit) {
+        print_entry(graph_map, cvit->first);       
     }
+}
+
+void print_qnum(map<string, vector<string>> graph_map, string key) {
+    cout << graph_map[key].size() << ": ["; //Prints num of entries for digraph and start of bracket
+    unsigned int count = 0; //Keeps track of number of entries
+    for (vector<string>::const_iterator cvit = graph_map[key].cbegin(); cvit != graph_map[key].cend(); ++cvit) {
+        count++; 
+        if (count != graph_map[key].size()) { //For every entry but the last, a comma and space is printed after the word
+            cout << *cvit << ", "; 
+        }
+        else {
+            cout << *cvit; //Final word is printed without comma nor space
+        }
+    }
+    cout << "]" << endl; //Prints final bracket and new line character
 }
