@@ -1,2 +1,29 @@
 Hopkins ID: 1945C9
 
+Structure Justification:
+Following conventional coding principles, I sought to design this project in a modular fashion
+to help increase readability as well as ease of production. To do this, I created a header file 
+and a cpp file containing definitions for all of my self-made functions. This can be seen through 
+all of digraph_analyzer.cpp as I make numerous calls to these functions.   
+
+The functions were divided into more minor helper functions (e.g. converting a word to all lowercase)
+and more robust main functions. The minor functions were added as I made the project whenever I saw the 
+need to make more. The main functions covered essentially every aspect of the project besides the user 
+inputs, which were implemented in the main digraph_analyzer.cpp file but supplemented with user functions.
+
+The first main functions involved the reading and searching of digraphs within the text. The digraphs to 
+search for were initialized into a vector. This created a list of digraphs I could refer to in the future. 
+This was useful for making the map of digraphs and container words for those digraphs. This composed the 
+second function. 
+
+From there, I made a base print function for printing a single entry from the map of digraphs. This formed 
+the basis of my other print functions, which were simply iterative loops calling on the original. For printing counts,
+it was slightly more involved but remedied through the use of the sort function and a self-defined comparator. 
+In addition, the final print function was essentially reusing the code from my original base function with 
+a minor change in print output in the first line of code. Reusing the base print function saved me much time. 
+
+From there, I finished the rest of my code in the main digraph_analyzer.cpp file. Besides adding a few 
+if-else statements to detect the proper user input, the code was essentially finished via the functions 
+from the digraph_functions.cpp file. Overall, using this modular approach great improved my productivity 
+and awareness of my program. 
+
