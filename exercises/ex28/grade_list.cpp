@@ -24,7 +24,13 @@ GradeList::GradeList(int capacity):capacity(capacity) { assert(capacity > 0);}
 // resize it by doubling its length. Do not use realloc!
 void GradeList::add(double grade) {
   if ((count + 1) > capacity) {
+    double * temp = grades; 
+    delete[] grades; 
     grades = new double[capacity * 2]; 
+    for (int i = 0; i < count; i++) {
+      grades[i] = temp[i]; 
+    }
+    delete[] temp; 
   }
   grades[count] = grade; 
   count++; 
@@ -34,14 +40,16 @@ void GradeList::add(double grade) {
 // grades to this object.
 void GradeList::add(int howmany, double * grades) {
   for (int i = 0; i < howmany; i++) {
-    add(grades[i]); 
+    add(grades[i]);
   }
+  
 }
 
 // TODO: write a function (in grade_list.cpp) to clear the list
 // of all values, making the array as small as possible
 void GradeList::clear() {
-  
+  delete[] grades; 
+  grades = new double[1]; 
 }
 
 
