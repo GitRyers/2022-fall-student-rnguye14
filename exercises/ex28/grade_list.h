@@ -51,6 +51,10 @@ class GradeList {
   //Destructor
   ~GradeList() {delete[] grades;}
 
+  //Iterators
+  std::vector<double>::const_iterator begin(); 
+  std::vector<double>::const_iterator end();
+
   // These functions are written for you, for convenience.
   int length() { return capacity; }
   int size() { return count; }

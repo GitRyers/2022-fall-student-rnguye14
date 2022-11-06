@@ -18,22 +18,34 @@ double GradeList::min() {
 
 // TODO: write a constructor (in grade_list.cpp) that has a 
 // parameter indicating the starting length of the array. 
-GradeList::GradeList(int capacity):capacity(capacity) { assert(capacity > 0);} 
+GradeList::GradeList(int capacity = 1): capacity(capacity) { 
+    assert(capacity > 0);
+    count = 0; 
+    grades = new double[capacity];
+  } 
 
 // TODO: Add the given grade to the grades list. If the array is full,
 // resize it by doubling its length. Do not use realloc!
-void GradeList::add(double grade) {
+void GradeList::add(double grade) { 
   if ((count + 1) > capacity) {
-    double * temp = grades; 
-    delete[] grades; 
-    grades = new double[capacity * 2]; 
+    //Initialize temporary vector to hold grades list values 
+    std::vector<double> temp; 
     for (int i = 0; i < count; i++) {
-      grades[i] = temp[i]; 
+      temp.push_back(grades[i]); 
     }
-    delete[] temp; 
+
+    //Delete and reallocate memory
+    delete[] grades; 
+    capacity *= 2; 
+    grades = new double[capacity];
+
+    //Add existing values back to newly dynamically allocated array 
+    for (int i = 0; i < count; i++) {
+      grades[i] = temp.at(i); 
+    }
   }
-  grades[count] = grade; 
   count++; 
+  grades[count - 1] = grade; 
 }
 
 // TODO: Add the specified number of values from an array of 
@@ -42,14 +54,22 @@ void GradeList::add(int howmany, double * grades) {
   for (int i = 0; i < howmany; i++) {
     add(grades[i]);
   }
-  
 }
 
 // TODO: write a function (in grade_list.cpp) to clear the list
 // of all values, making the array as small as possible
 void GradeList::clear() {
   delete[] grades; 
-  grades = new double[1]; 
+  count = 0; 
+  capacity = 1; 
+  grades = new double[capacity]; 
 }
 
+std::vector<double>::const_iterator begin() {
+
+}
+
+std::vector<double>::const_iterator end() {
+
+}
 
