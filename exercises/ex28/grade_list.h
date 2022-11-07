@@ -25,6 +25,7 @@
  */
 
 #include <vector>
+#include <cstddef>
 
 class GradeList {
 
@@ -49,21 +50,17 @@ class GradeList {
   void clear();
 
   //Destructor
-  ~GradeList() {delete[] grades;}
-
-  //Iterators
-  std::vector<double>::const_iterator begin(); 
-  std::vector<double>::const_iterator end();
+  ~GradeList() {if (grades != NULL) delete[] grades;}
 
   // These functions are written for you, for convenience.
   int length() { return capacity; }
   int size() { return count; }
   double min();  // defined in grade_list.cpp
 
-
   // TODO: write begin and end functions to mimic an iterator
   // using actual pointers
-
+  double *begin() { return grades != NULL ? grades : NULL; }
+  double *end() { return grades != NULL ? grades + count: NULL; }
 
 private:
 

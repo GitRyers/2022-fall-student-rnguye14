@@ -1,5 +1,6 @@
 #include "grade_list.h"
 #include <cassert>
+#include <cstddef>
 
 // You will add function definitions to this file.
 // See TODOs in grade_list.h.
@@ -18,40 +19,40 @@ double GradeList::min() {
 
 // TODO: write a constructor (in grade_list.cpp) that has a 
 // parameter indicating the starting length of the array. 
-GradeList::GradeList(int capacity = 1): capacity(capacity) { 
-    assert(capacity > 0);
-    count = 0; 
-    grades = new double[capacity];
-  } 
+GradeList::GradeList(int capacity): capacity(capacity), count(0), grades(new double[capacity]) { assert(capacity > 0); } 
+
+GradeList::GradeList(const GradeList & from): capacity(from.capacity), count(from.count), grades(new double[capacity]) { 
+  for (int i = 0; i < count; i++) {
+    grades[i] = from.grades[i]; 
+  }
+} 
 
 // TODO: Add the given grade to the grades list. If the array is full,
 // resize it by doubling its length. Do not use realloc!
 void GradeList::add(double grade) { 
-  if ((count + 1) > capacity) {
-    //Initialize temporary vector to hold grades list values 
-    std::vector<double> temp; 
-    for (int i = 0; i < count; i++) {
-      temp.push_back(grades[i]); 
-    }
-
-    //Delete and reallocate memory
-    delete[] grades; 
+  if (count == capacity) {
+    //Adjust capacity of array
     capacity *= 2; 
-    grades = new double[capacity];
-
-    //Add existing values back to newly dynamically allocated array 
+    
+    //Initialize temporary dynamically allocated array to hold values 
+    double *temp = new double[capacity]; 
     for (int i = 0; i < count; i++) {
-      grades[i] = temp.at(i); 
+      temp[i] = grades[i]; 
     }
+
+    //Delete and assign grades to temp 
+    if (grades != NULL) {
+      delete[] grades; 
+    }
+    grades = temp;
   }
-  count++; 
-  grades[count - 1] = grade; 
+  grades[count++] = grade; 
 }
 
 // TODO: Add the specified number of values from an array of 
 // grades to this object.
 void GradeList::add(int howmany, double * grades) {
-  for (int i = 0; i < howmany; i++) {
+  for (int i = 0; i < howmany; ++i) {
     add(grades[i]);
   }
 }
@@ -59,17 +60,10 @@ void GradeList::add(int howmany, double * grades) {
 // TODO: write a function (in grade_list.cpp) to clear the list
 // of all values, making the array as small as possible
 void GradeList::clear() {
-  delete[] grades; 
+  if (grades != NULL) {
+    delete[] grades; 
+  }
   count = 0; 
   capacity = 1; 
   grades = new double[capacity]; 
 }
-
-std::vector<double>::const_iterator begin() {
-
-}
-
-std::vector<double>::const_iterator end() {
-
-}
-
