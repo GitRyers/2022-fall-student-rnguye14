@@ -1,7 +1,9 @@
 #include "complex.h"
 #include <iostream>
+#include <cmath>
 
 using std::ostream; 
+using std::cout; 
 using std::endl; 
 
 // You will add function definitons to this file
@@ -20,23 +22,45 @@ Complex::Complex(const Complex& rhs): rel(rhs.rel), img(rhs.img) {}
 
 // TODO: assignment operator
 Complex& Complex::operator=(const Complex& rhs) {
-    
+    rel = rhs.rel; 
+    img = rhs.img; 
+    return *this; 
 }
 
 // TODO: add operator
-
+Complex Complex::operator+(const Complex& rhs) const {
+    Complex result(rel + rhs.rel, img + rhs.img); 
+    return result; 
+}
 
 // TODO: minus operator
-
+Complex Complex::operator-(const Complex& rhs) const {
+    Complex result(rel - rhs.rel, img - rhs.img); 
+    return result; 
+}
 
 // TODO: times operator
-
+Complex Complex::operator*(const Complex& rhs) const {
+    float new_rel = rel * rhs.rel + (-1) * (img * rhs.img);
+    float new_img = rel * rhs.img + img * rhs.rel;
+    Complex result(new_rel, new_img); 
+    return result; 
+}
 
 // TODO: times operator (float)
-
+Complex Complex::operator*(const float& rhs) const {
+    Complex result (rhs * rel, rhs * img);
+    return result; 
+}
 
 // TODO: divide operator
-
+Complex Complex::operator/(const Complex& rhs) const {
+    Complex conj(rhs.rel, -1 * rhs.img); 
+    Complex den = rhs * conj; 
+    Complex num = *this * rhs;
+    cout << num << endl;
+    return num * den; 
+}
 
 //// things to be added for part 4 ////
 // TODO: times operator for float times complex

@@ -25,7 +25,7 @@ int main() {
   Complex h = b * scale;
   std::cout << h << " (expected 4 + 8i)" << std::endl;
   Complex i = b / d;
-  std::cout << i << " (expected 1 + 0i)"<< std::endl; 
+  std::cout << i << " (expected 1 + 0i)"<< std::endl;
   
   // Uncomment after finishing part 4
   /*
