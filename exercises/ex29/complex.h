@@ -39,7 +39,7 @@ class Complex {
     Complex(const Complex& rhs);
 
     // TODO: overload assignment operator
-    Complex& operator=(const Complex& rhs);
+    const Complex& operator=(const Complex& rhs);
 
     // TODO: overload the add operator
     Complex operator+(const Complex& rhs) const;
@@ -58,6 +58,7 @@ class Complex {
 
     // Part 4
     // TODO: non-member function operator overload for float times complex using friend
+    friend Complex operator*(const float& lhs, const Complex& rhs); 
 
   private:
     float rel, img; // real and imaginary part of a complex number

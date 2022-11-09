@@ -28,10 +28,8 @@ int main() {
   std::cout << i << " (expected 1 + 0i)"<< std::endl;
   
   // Uncomment after finishing part 4
-  /*
   Complex j = scale * b;
   std::cout << j << " (expected 4 + 8i)" << std::endl;
-  */
   
   return 0;
 }

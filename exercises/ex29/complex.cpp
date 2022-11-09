@@ -21,7 +21,7 @@ ostream& operator<<(ostream& os, const Complex& c) {
 Complex::Complex(const Complex& rhs): rel(rhs.rel), img(rhs.img) {}
 
 // TODO: assignment operator
-Complex& Complex::operator=(const Complex& rhs) {
+const Complex& Complex::operator=(const Complex& rhs) {
     rel = rhs.rel; 
     img = rhs.img; 
     return *this; 
@@ -29,14 +29,12 @@ Complex& Complex::operator=(const Complex& rhs) {
 
 // TODO: add operator
 Complex Complex::operator+(const Complex& rhs) const {
-    Complex result(rel + rhs.rel, img + rhs.img); 
-    return result; 
+    return Complex(rel + rhs.rel, img + rhs.img); 
 }
 
 // TODO: minus operator
 Complex Complex::operator-(const Complex& rhs) const {
-    Complex result(rel - rhs.rel, img - rhs.img); 
-    return result; 
+    return Complex(rel - rhs.rel, img - rhs.img); 
 }
 
 // TODO: times operator
@@ -49,20 +47,23 @@ Complex Complex::operator*(const Complex& rhs) const {
 
 // TODO: times operator (float)
 Complex Complex::operator*(const float& rhs) const {
-    Complex result (rhs * rel, rhs * img);
-    return result; 
+    return Complex(rhs * rel, rhs * img);
 }
 
 // TODO: divide operator
 Complex Complex::operator/(const Complex& rhs) const {
-    Complex conj(rhs.rel, -1 * rhs.img); 
-    Complex den = rhs * conj; 
-    Complex num = *this * rhs;
-    cout << num << endl;
-    return num * den; 
+    float norm = rhs.rel * rhs.rel + rhs.img * rhs.img; 
+    if (norm == 0) {
+        return Complex(); 
+    }
+    float new_rel = (rel * rhs.rel + (-1) * (img * rhs.img)) / norm; 
+    float new_img = (rel * rhs.img + img * rhs.rel) / norm; 
+    return Complex(new_rel, new_img); 
 }
 
 //// things to be added for part 4 ////
 // TODO: times operator for float times complex
-
+Complex operator*(const float& lhs, const Complex& rhs) {
+    return Complex(lhs * rhs.rel, lhs * rhs.img); 
+}
 
