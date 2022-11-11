@@ -4,15 +4,15 @@
 //copy constructor to make a "deep copy" of the set
 int_set::int_set(const int_set& orig){
   //TO DO: FILL IN YOUR CODE HERE
-  head = orig.head;
-  size = orig.size; 
+  for (const int_node *node = orig.head; node != nullptr; node = node->get_next()) {
+    add(node->get_data()); 
+  } 
 }
 
 //destructor
 int_set::~int_set(){
   //TO DO: FILL IN YOUR CODE HERE
-  
-  delete head;
+  clear(); 
 }
 
 //remove all existing items from set
@@ -89,9 +89,13 @@ int_set& int_set::operator+=(int new_value) {
 // overload the assignment operator to make a deep copy and return
 // a reference to this updated int_set
 int_set& int_set::operator=(const int_set& other) {
-
   //TO DO: FILL IN YOUR CODE HERE
-  
+  if (this != &other) {
+    clear();
+    for (const int_node *node = other.head; node != nullptr; node = node->get_next()) {
+      add(node->get_data()); 
+    } 
+  } 
   return *this;
 }
 
@@ -102,8 +106,14 @@ int_set& int_set::operator=(const int_set& other) {
 //and that we don't pre-pend the name of this method with int_set::,
 //since it's not an actual member of the class
 std::ostream& operator<<(std::ostream& os, const int_set& s){
-
   //TO DO: FILL IN YOUR CODE HERE
-  
+  os << '{';
+  for (int_node *node = s.head; node != nullptr; node = node->get_next()) {
+    os << node->get_data();
+    if (node->get_next() != nullptr) {
+      os << ", "; 
+    }
+  }
+  os << '}'; 
   return os;
 }

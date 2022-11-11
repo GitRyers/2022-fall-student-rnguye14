@@ -21,8 +21,6 @@ int main() {
   cout << "just attempted to re-add 1,2,5: " << s << endl;
   cout << "s size is " << s.get_size() << endl;
 
-
-  /*
   //This section requires the += operator!
 
   s += 4;
@@ -31,7 +29,7 @@ int main() {
   cout << "just used operator+= 5 on s: " << s << endl;
   cout << "s += 6 results in " << (s += 6) << endl;
   cout << "size of s is " << s.get_size() << endl;
-  */
+
 
   //This section requires the copy constructor!
 
@@ -52,7 +50,6 @@ int main() {
   cout << "and v's contents are still: " << v << endl;
 
 
-  /*
   //This section requires the assignment operator!
   int_set t;
   t.add(27);
@@ -67,7 +64,6 @@ int main() {
   cout << "but t now looks like this: " << t << endl;
   cout << "and v's contents are still: " << v << endl;
   v.clear();
-  */
 
   //NOTE: If the final section above is uncommented, you'll also need the
   //destructor implmented to avoid memory leaks, since s isn't
