@@ -1,17 +1,17 @@
 CC=g++
 CFLAGS=-std=c++11 -pedantic -Wall -Wextra
 
-CTreeTest: CTreeTest.o 
+cTreeTest: cTreeTest.o 
 	$(CC) $(CFLAGS) -o CTreeTest CTreeTest.o 
 
-TTreeTest: TTreeTest.o 
+tTreeTest: tTreeTest.o 
 	$(CC) $(CFLAGS) -o TTreeTest TTreeTest.o 
 
-CTreeTest.o: CTreeTest.cpp CTree.h
-    $(CC) $(CFLAGS) -c CTreeTest.cpp
+cTreeTest.o: CTreeTest.cpp CTree.h CTree.cpp
+	$(CC) $(CFLAGS) -c CTreeTest.cpp CTree.h
 
-TTreeTest.o: TTreeTest.cpp CTree.h
+tTreeTest.o: TTreeTest.cpp Tree.h Tree.inc
 	$(CC) $(CFLAGS) -c TTreeTest.cpp
 
 clean:
-	rm -f *.o CTreeTest TTreeTest
+	rm -f *.o cTreeTest tTreeTest
