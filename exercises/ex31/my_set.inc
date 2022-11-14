@@ -1,26 +1,25 @@
-#include "my_set.h"
 template<typename T> 
 
 //copy constructor to make a "deep copy" of the set
-T_set::T_set(const T_set& orig){
+my_set<T>::my_set(const my_set& orig){
   //TO DO: FILL IN YOUR CODE HERE
-  for (const T_node *node = orig.head; node != nullptr; node = node->get_next()) {
+  for (const my_node<T> *node = orig.head; node != nullptr; node = node->get_next()) {
     add(node->get_data()); 
   } 
 }
 
 //destructor
-int_set::~int_set(){
+my_set<T>::~my_set(){
   //TO DO: FILL IN YOUR CODE HERE
   clear(); 
 }
 
 //remove all existing items from set
-void int_set::clear(){
+void my_set::clear(){
   //deallocate all nodes in the list
-  int_node *cur = head;
+  my_node *cur = head;
   while (cur) {
-	int_node* temp = cur;
+	my_node *temp = cur;
 	cur = cur->get_next();
 	delete temp;
   }
@@ -32,10 +31,10 @@ void int_set::clear(){
 //insert the given item into the set, provided it's not a duplicate
 //return true if insertion successful, false otherwise
 //RESTRICTION: use only < and == on the data within nodes (not <=, >, >=, !=)
-bool int_set::add(int new_value) {
+bool my_set::add(T new_value) {
 
   //first, abort if new_value would be a duplicate when added to set
-  int_node* cur = head;
+  my_node *cur = head;
   while (cur) {
     if (cur->get_data() == new_value) {
       return false;
@@ -44,7 +43,7 @@ bool int_set::add(int new_value) {
   }
 
   //next, create new node to hold the new value
-  int_node* new_node = new int_node(new_value);
+  my_node *new_node = new my_node(new_value);
   if (!new_node) {  //allocation failed!
 	return false; 
   }
@@ -79,7 +78,7 @@ bool int_set::add(int new_value) {
  
 //Overload the += operator using the add method
 //return a reference to this int_set for consistency
-int_set& int_set::operator+=(int new_value) {
+my_set<T>& my_set::operator+=(T new_value) {
   //TO DO: FILL IN YOUR CODE HERE
   add(new_value); 
   return *this;    //for consistency - assignment ops return the value assigned
@@ -88,11 +87,11 @@ int_set& int_set::operator+=(int new_value) {
 
 // overload the assignment operator to make a deep copy and return
 // a reference to this updated int_set
-int_set& int_set::operator=(const int_set& other) {
+my_set<T>& my_set::operator=(const my_set& other) {
   //TO DO: FILL IN YOUR CODE HERE
   if (this != &other) {
     clear();
-    for (const int_node *node = other.head; node != nullptr; node = node->get_next()) {
+    for (const my_node *node = other.head; node != nullptr; node = node->get_next()) {
       add(node->get_data()); 
     } 
   } 
@@ -105,10 +104,11 @@ int_set& int_set::operator=(const int_set& other) {
 //NOTE that the 'friend' keyword doesn't appear outside the class,
 //and that we don't pre-pend the name of this method with int_set::,
 //since it's not an actual member of the class
-std::ostream& operator<<(std::ostream& os, const int_set& s){
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const my_set<U>& s){
   //TO DO: FILL IN YOUR CODE HERE
   os << '{';
-  for (int_node *node = s.head; node != nullptr; node = node->get_next()) {
+  for (my_node *node = s.head; node != nullptr; node = node->get_next()) {
     os << node->get_data();
     if (node->get_next() != nullptr) {
       os << ", "; 

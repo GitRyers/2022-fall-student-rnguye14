@@ -2,7 +2,6 @@
 #define MY_SET_H
 
 #include "my_node.h"
-#include "my_set.inc"
 
 /* Class to represent a mathematical set of ints (like std::set<int>,
    but we're writing this one ourselves).  Recall that set objects may
@@ -12,13 +11,11 @@
    int_nodes. The sort is in ascending order by < on ints.
 */
 template<typename T>
-using my_set<T>;  
-template<typename U>
 class my_set {
 
  private:
 
-  my_node* head;
+  my_node<T> head;
   int       size;
 
  public:
@@ -54,9 +51,9 @@ class my_set {
 
   //output items in set, comma-and-space-separated within curly braces
   //E.g.  {1, 2, 3}  or {}
+  template<typename U> 
   friend std::ostream& operator<<(std::ostream& os, const my_set<U>& s);
-
-
 };
 
+#include "my_set.inc"
 #endif
