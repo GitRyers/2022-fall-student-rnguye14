@@ -18,11 +18,11 @@ int main (void) {
   aptr->show();
   aptr->display(); 
   cout << endl;
-  aobj.d = 17.5;  
+  //aobj.d = 17.5;  Variable d is declared as protected in Class A so cannot be directly accessed   
 
   bptr = &bobj;
   aptr = bptr;   
-  aptr->setb(15); 
+  //aptr->setb(15);  Neither variable b nor member function setb is not available in Class A   
   aptr->seta(3);
   aptr->show();     
   cout << endl;
@@ -34,7 +34,7 @@ int main (void) {
   aobj = bobj;
   aobj.show();
   A a5(5);
-  bobj = a5;  
+  //bobj = a5;  There is no defined member function to assign an A Class object to B class object  
 
 }
 
