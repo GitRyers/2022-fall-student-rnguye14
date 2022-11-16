@@ -17,8 +17,9 @@ public:
   void setd(double dval) { d = dval; } ;
   void display() { std::cout << "non-virtual display A " <<  std::endl; show(); };
   void test() { std::cout << "test A" << std::endl ; };
+  int geta() { return a; }; 
   virtual void show() { std::cout << "A is " << a << std::endl; test(); };
-
+  virtual void toString() const {std::cout << "[Aclass: a = " << a << ", d = " << d << ", size = " << d << std::endl;}; 
 };
 
 #endif

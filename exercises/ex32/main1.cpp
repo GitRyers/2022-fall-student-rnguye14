@@ -32,7 +32,7 @@ int main (void) {
   aobj = A(10);
   aobj.show();
   aobj = bobj;
-  aobj.show();
+  aobj.show(); 
   A a5(5);
   //bobj = a5;  There is no defined member function to assign an A Class object to B class object  
 

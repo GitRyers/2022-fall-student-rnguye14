@@ -19,8 +19,8 @@ public:
   void setb(int val) { b = val; };
   void display() { std::cout << "non-virtual display B " << std::endl; show(); };
   void test() { std::cout << "test B" << std::endl; };
-  void show() { A::show(); std::cout << "B is " << b << std::endl; test(); };
-
+  virtual void show() override { A::show(); std::cout << "B is " << b << std::endl; test(); };
+  virtual void toString() const override {std::cout << "[Aclass: a = " << a << ", d = " << d << ", size = " << d << std::endl;};
 };
 
 #endif
