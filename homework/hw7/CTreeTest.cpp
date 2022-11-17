@@ -68,12 +68,13 @@ public:
     t1->kids->printData(); 
     //assert(t1->toString() == "A\nb\n");
     // can't add again
-    assert(!t1->addChild('b'));
+    //assert(!t1->addChild('b'));
     //assert(t1->toString() == "A\nb\n");
 
     // A
     // |
     // b - c
+    /*
     assert(t1->addChild('c'));
     t1->kids->sibs->printData(); 
     //assert(t1->toString() == "A\nb\nc\n");
@@ -81,7 +82,8 @@ public:
     assert(!t1->addChild('c'));
     t1->kids->sibs->printData(); 
     //assert(t1->toString() == "A\nb\nc\n");
-    
+    */
+    delete t1;   
     /* 
     // A
     // |

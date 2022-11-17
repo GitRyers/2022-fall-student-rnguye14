@@ -27,13 +27,11 @@ class CTree {
   ~CTree();  // clear siblings to right and children and this node
 
   void printData() {std::cout << data << std::endl;}; 
-
-  void destroy(CTree * node); //Recursively deletes nodes 
   
   CTree& operator+(CTree& rt);  //^ operator to do the same thing as addChild
   bool operator==(const CTree &root); // return true if two CTrees match node by node
   
-  bool checkUniq(char ch, CTree *node); //returns true if character is unique amongst its sibilings 
+  int checkUniq(char ch, CTree *node); //returns true if character is unique amongst its sibilings 
 
   // siblings and children must be unique, return true if added, false otherwise
   bool addChild(char ch);

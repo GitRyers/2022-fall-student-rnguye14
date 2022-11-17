@@ -3,16 +3,10 @@
 
 //Destructor
 CTree::~CTree() {
-    destroy(prev);
+    delete sibs;
+    delete kids;  
 }
 
-void CTree::destroy(CTree * node) {
-    if (node) {
-        destroy(node->sibs);
-        destroy(node->kids);
-        delete node;
-    }
-}
 /*
 CTree& CTree::operator+(CTree& rt) {
     if (addChild(rt)) {
@@ -26,35 +20,44 @@ CTree& CTree::operator+(CTree& rt) {
 bool CTree::operator==(const CTree &root); 
 */
 
-bool CTree::checkUniq(char ch, CTree * node) {
-    if (data != ch) {
-        if (node->sibs != NULL) {
-            char temp = ch; 
-            checkUniq(temp, node->sibs); 
-        }
-        return true; 
+int CTree::checkUniq(char ch, CTree * node) {
+    int count = 0;  
+    if (node->data != ch) {
+        if (node->sibs != NULL) { 
+            count += checkUniq(ch, node->sibs); 
+        } 
     }
     else {
-        return false; 
+        count++;  
     }
+    return count; 
 }
 
 bool CTree::addChild(char ch) {
-    if (checkUniq(ch, kids)) {
-        CTree *cur = kids;
-        while (cur) {
-            if (cur->data < ch) {
-                cur = cur->sibs; 
+    if (kids != NULL) {
+        if (checkUniq(ch, kids) == 0) {
+            std::cout << "reached target" << std::endl; 
+            CTree *cur = kids;
+            while (cur) {
+                if (cur->data < ch) {
+                    cur = cur->sibs; 
+                }
+                else {
+                    CTree *node = new CTree(ch, NULL, cur, cur->prev);
+                    cur->prev->sibs = node; 
+                    cur->prev = node; 
+                    break; 
+                }
             }
-            else {
-                CTree(ch, NULL, cur->sibs, cur); 
-                break; 
-            }
+            return true; 
         }
-        return true; 
+        else {
+            return false; 
+        }
     }
     else {
-        return false; 
+        kids = new CTree(ch, NULL, NULL, this); 
+        return true; 
     }
 }
 
