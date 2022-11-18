@@ -15,7 +15,7 @@ class my_set {
 
  private:
 
-  my_node<T> head;
+  my_node<T> * head;
   int       size;
 
  public:
@@ -24,7 +24,7 @@ class my_set {
   my_set(): head(nullptr), size(0) { }
 
   //copy constructor to make a "deep copy" of the set
-  my_set(const my_set& other);
+  my_set(const my_set<T> & other);
 
   //destructor
   ~my_set();
@@ -41,12 +41,12 @@ class my_set {
  
 
   // alternative way to call add, returning this updated int_set
-  my_set& operator+=(T new_value);
+  my_set<T>& operator+=(T new_value);
 
 
   // overload the assignment operator to make a deep copy and return
   // a reference to this updated int_set
-  my_set& operator=(const my_set& other);
+  my_set<T>& operator=(const my_set<T>& other);
 
 
   //output items in set, comma-and-space-separated within curly braces

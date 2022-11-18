@@ -1,15 +1,15 @@
+#include "my_set.h"
 template<typename T> 
-
 //copy constructor to make a "deep copy" of the set
-my_set<T>::my_set(const my_set& orig){
+my_set::my_set(const my_set<T>& orig){
   //TO DO: FILL IN YOUR CODE HERE
-  for (const my_node<T> *node = orig.head; node != nullptr; node = node->get_next()) {
+  for (const my_node<T> * node = orig.head; node != nullptr; node = node->get_next()) {
     add(node->get_data()); 
   } 
 }
 
 //destructor
-my_set<T>::~my_set(){
+my_set::~my_set(){
   //TO DO: FILL IN YOUR CODE HERE
   clear(); 
 }
@@ -17,9 +17,9 @@ my_set<T>::~my_set(){
 //remove all existing items from set
 void my_set::clear(){
   //deallocate all nodes in the list
-  my_node *cur = head;
+  my_node<T> *cur = head;
   while (cur) {
-	my_node *temp = cur;
+	my_node<T> *temp = cur;
 	cur = cur->get_next();
 	delete temp;
   }
@@ -34,7 +34,7 @@ void my_set::clear(){
 bool my_set::add(T new_value) {
 
   //first, abort if new_value would be a duplicate when added to set
-  my_node *cur = head;
+  my_node<T> *cur = head;
   while (cur) {
     if (cur->get_data() == new_value) {
       return false;
@@ -43,7 +43,7 @@ bool my_set::add(T new_value) {
   }
 
   //next, create new node to hold the new value
-  my_node *new_node = new my_node(new_value);
+  my_node<T> *new_node = new my_node(new_value);
   if (!new_node) {  //allocation failed!
 	return false; 
   }
@@ -87,11 +87,11 @@ my_set<T>& my_set::operator+=(T new_value) {
 
 // overload the assignment operator to make a deep copy and return
 // a reference to this updated int_set
-my_set<T>& my_set::operator=(const my_set& other) {
+my_set<T>& my_set::operator=(const my_set<T>& other) {
   //TO DO: FILL IN YOUR CODE HERE
   if (this != &other) {
     clear();
-    for (const my_node *node = other.head; node != nullptr; node = node->get_next()) {
+    for (const my_node<T> *node = other.head; node != nullptr; node = node->get_next()) {
       add(node->get_data()); 
     } 
   } 
@@ -108,7 +108,7 @@ template<typename U>
 std::ostream& operator<<(std::ostream& os, const my_set<U>& s){
   //TO DO: FILL IN YOUR CODE HERE
   os << '{';
-  for (my_node *node = s.head; node != nullptr; node = node->get_next()) {
+  for (my_node<U> *node = s.head; node != nullptr; node = node->get_next()) {
     os << node->get_data();
     if (node->get_next() != nullptr) {
       os << ", "; 
