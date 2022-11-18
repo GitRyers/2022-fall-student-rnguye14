@@ -10,7 +10,7 @@
    for duplicates, we store the items in a SORTED linked list of
    int_nodes. The sort is in ascending order by < on ints.
 */
-template<typename T>
+template<class T>
 class my_set {
 
  private:

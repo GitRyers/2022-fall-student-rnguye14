@@ -3,7 +3,7 @@
 #ifndef MY_NODE_H
 #define MY_NODE_H
 
-template<typename T> 
+template<class T> 
 class my_node {
 
  private:

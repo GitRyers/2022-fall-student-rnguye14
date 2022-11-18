@@ -1,7 +1,6 @@
-#include "my_set.h"
-template<typename T> 
 //copy constructor to make a "deep copy" of the set
-my_set::my_set(const my_set<T>& orig){
+template<typename T>
+my_set<T>::my_set(const my_set<T>& orig){
   //TO DO: FILL IN YOUR CODE HERE
   for (const my_node<T> * node = orig.head; node != nullptr; node = node->get_next()) {
     add(node->get_data()); 
@@ -9,13 +8,14 @@ my_set::my_set(const my_set<T>& orig){
 }
 
 //destructor
-my_set::~my_set(){
+template<typename T>
+my_set<T>::~my_set(){
   //TO DO: FILL IN YOUR CODE HERE
   clear(); 
 }
 
 //remove all existing items from set
-void my_set::clear(){
+void my_set<T>::clear(){
   //deallocate all nodes in the list
   my_node<T> *cur = head;
   while (cur) {
@@ -31,7 +31,7 @@ void my_set::clear(){
 //insert the given item into the set, provided it's not a duplicate
 //return true if insertion successful, false otherwise
 //RESTRICTION: use only < and == on the data within nodes (not <=, >, >=, !=)
-bool my_set::add(T new_value) {
+bool my_set<T>::add(T new_value) {
 
   //first, abort if new_value would be a duplicate when added to set
   my_node<T> *cur = head;
@@ -78,7 +78,8 @@ bool my_set::add(T new_value) {
  
 //Overload the += operator using the add method
 //return a reference to this int_set for consistency
-my_set<T>& my_set::operator+=(T new_value) {
+template<typename my_set<T>>
+my_set<T>& my_set<T>::operator+=(T new_value) {
   //TO DO: FILL IN YOUR CODE HERE
   add(new_value); 
   return *this;    //for consistency - assignment ops return the value assigned
@@ -87,7 +88,8 @@ my_set<T>& my_set::operator+=(T new_value) {
 
 // overload the assignment operator to make a deep copy and return
 // a reference to this updated int_set
-my_set<T>& my_set::operator=(const my_set<T>& other) {
+template<typename my_set<T>>
+my_set<T>& my_set<T>::operator=(const my_set<T>& other) {
   //TO DO: FILL IN YOUR CODE HERE
   if (this != &other) {
     clear();
