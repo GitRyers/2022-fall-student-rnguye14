@@ -82,14 +82,12 @@ public:
     // B - b - c
     assert(t1->addChild('B')); 
     // 'B' comes before 'b'
-    cout << t1->toString() << endl; 
     assert(t1->toString() == "A\nB\nb\nc\n");
     // can't add repeats
     assert(!t1->addChild('B'));
     assert(!t1->addChild('b'));
     assert(!t1->addChild('c'));
     assert(t1->toString() == "A\nB\nb\nc\n");
-    
     
     // can't add 'A' as sibling of 'A'
     assert(!t1->addSibling('A'));
@@ -99,14 +97,10 @@ public:
     assert(!t1->addSibling('C'));
     assert(t1->toString() == "A\nB\nb\nc\n");
     
-    
-
-    /*
     // Adding in an already built subTree
     // First build another tree
     // R
     CTree* t2 = new CTree('R');
-    
     assert(t2->toString() == "R\n");
         
     // R
@@ -114,7 +108,6 @@ public:
     // C
     assert(t2->addChild('C'));
     assert(t2->toString() == "R\nC\n");
-
 
     // R
     // |
@@ -145,12 +138,10 @@ public:
     assert(t1->toString() == "A\nB\nb\nc\n");
     // add t1 to t2
     assert(t2->addChild(t1));
-    // t1 should now have siblings
+    // t1 should now have siblings 
     assert(t1->toString() == "A\nB\nb\nc\nB\nC\nd\n");
     // t2 should be updated
     assert(t2->toString() == "R\nA\nB\nb\nc\nB\nC\nd\n");
-
-
 
     // R
     // |
@@ -182,9 +173,8 @@ public:
     assert(t2->addChild('e'));
     assert(t2->toString() == "R\n@\nA\nB\nb\nc\nB\nC\nD\nd\ne\n");
     delete t2;
-    */
   }
-/*
+
   // tests the caret operator
   // should behave the same as addChild. Unlike addChild, it
   // returns the resulting tree not a boolean
@@ -205,6 +195,7 @@ public:
   // test << operator.
   // << operator should call toString to insert
   // the content of a tree into an output stream
+  
   static void testOutputOp() {
     CTree* t1 = new CTree('a');
     assert(t1->addChild('b'));
@@ -219,7 +210,6 @@ public:
     delete t1;
   }
 
-  
   // adds a single child
   static void testAddSimpleChild() {
     // A
@@ -234,9 +224,10 @@ public:
     // |
     // A
     assert(t2->addChild(t1));
-    assert(t2->toString() == "A\nA\n");
+    assert(t2->toString() == "A\nA\n"); 
     delete t2;
   }
+
   // test == operator. It should return true if two CTrees match each other node
   // by node. This mean that the two CTrees should have identical structure and 
   // the node values should be the same.
@@ -262,7 +253,6 @@ public:
     delete t1;
     delete t2;
   }
-*/
 };
 
 
@@ -271,9 +261,9 @@ int main(void) {
     cout << "Testing CTree" << endl;
     CTreeTest::testConstructor();
     CTreeTest::testAdd();
-    //CTreeTest::testAddSimpleChild();
-    //CTreeTest::testPlusOp();
-    //CTreeTest::testOutputOp();
-    //CTreeTest::testEqualityOp();
+    CTreeTest::testAddSimpleChild();
+    CTreeTest::testPlusOp();
+    CTreeTest::testOutputOp();
+    CTreeTest::testEqualityOp();
     cout << "CTree tests passed" << endl;
 }

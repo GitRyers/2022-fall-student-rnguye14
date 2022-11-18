@@ -1,4 +1,4 @@
-#include "CTree.h"
+#include "Tree.h"
 #include <iostream>
 #include <string> 
 
