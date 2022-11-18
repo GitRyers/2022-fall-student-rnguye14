@@ -7,25 +7,29 @@ using std::endl;
 using std::string; 
 
 //Destructor
-CTree::~CTree() {
+template <typename T>
+CTree<T>::~CTree() {
     delete sibs;
     delete kids;  
 }
 
-CTree& CTree::operator+(CTree& rt) {
+template <typename T>
+CTree<T>& CTree<T>::operator+(CTree<T>& rt) {
     addChild(&rt);
     return *this;  
 }
 
-bool CTree::operator==(const CTree &root) {
+template <typename T>
+bool CTree<T>::operator==(const CTree<T> &root) {
     return treeCompare(this, &root); 
 }
 
-int CTree::checkUniq(char ch, CTree * node) {
+template <typename T>
+int CTree<T>::checkUniq(T val, CTree<T> * node) {
     int count = 0;  
-    if (node->data != ch) { 
+    if (node->data != val) { 
         if (node->sibs != NULL) { 
-            count += checkUniq(ch, node->sibs); 
+            count += checkUniq(val, node->sibs); 
         } 
     }
     else {
@@ -34,14 +38,15 @@ int CTree::checkUniq(char ch, CTree * node) {
     return count; 
 }
 
-bool CTree::addChild(char ch) {
+template <typename T>
+bool CTree<T>::addChild(T val) {
     if (kids) {
-        if (checkUniq(ch, kids) == 0) {
-            CTree *cur = kids;
+        if (checkUniq(val, kids) == 0) {
+            CTree<T> *cur = kids;
             while (cur) {
-                if (ch > cur->data) {
+                if (val > cur->data) {
                     if (cur->sibs == NULL) {
-                        cur->sibs = new CTree(ch, NULL, NULL, cur); 
+                        cur->sibs = new CTree(val, NULL, NULL, cur); 
                         break; 
                     }
                     else {
@@ -49,7 +54,7 @@ bool CTree::addChild(char ch) {
                     }
                 }
                 else {
-                    CTree *node = new CTree(ch, NULL, cur, cur->prev); 
+                    CTree<T> *node = new CTree(val, NULL, cur, cur->prev); 
                     if (cur->prev->kids == cur) {
                         cur->prev->kids = node; 
                     }
@@ -67,16 +72,17 @@ bool CTree::addChild(char ch) {
         }
     }
     else {
-        kids = new CTree(ch, NULL, NULL, this); 
+        kids = new CTree(val, NULL, NULL, this); 
         return true; 
     }
 }
 
-bool CTree::addChild(CTree *root) {
+template <typename T>
+bool CTree<T>::addChild(CTree<T> *root) {
     if (!root->prev||!root->sibs) {
         if (kids) {
             if (checkUniq(root->data, kids) == 0) {
-                CTree *cur = kids;
+                CTree<T> *cur = kids;
                 while (cur) {
                     if (root->data > cur->data) {
                         if (cur->sibs == NULL) {
@@ -118,7 +124,7 @@ bool CTree::addChild(CTree *root) {
     }
 }
 
-string CTree::toString() {
+string CTree<T>::toString() {
     string str;
     str.push_back(data); 
     str.push_back('\n'); 
@@ -131,10 +137,11 @@ string CTree::toString() {
     return str; 
 }
 
-bool CTree::addSibling(char ch) {
+template <typename T>
+bool CTree<T>::addSibling(T val) {
     if (prev) {
-        if (checkUniq(ch, this) == 0) {
-            sibs = new CTree(ch, NULL, NULL, this); 
+        if (checkUniq(val, this) == 0) {
+            sibs = new CTree(val, NULL, NULL, this); 
             return true; 
         }
         else {
@@ -146,7 +153,8 @@ bool CTree::addSibling(char ch) {
     }
 }
 
-bool CTree::addSibling(CTree *root){
+template <typename T>
+bool CTree<T>::addSibling(CTree<T> *root){
     if (prev) {
         if (checkUniq(root->data, this) == 0) {
             sibs = root;
@@ -162,18 +170,20 @@ bool CTree::addSibling(CTree *root){
     }
 }
 
-std::ostream& operator<<(std::ostream& os, CTree& node) {
+template <typename U>
+std::ostream& operator<<(std::ostream& os, CTree<U>& node) {
     os << node.toString(); 
     return os; 
 }
 
-bool CTree::treeCompare(const CTree *a, const CTree *b) const {
+template <typename T>
+bool CTree<T>::treeCompare(const CTree<T> *a, const CTree<T> *b) const {
     if (a->data == b->data) {
         if (a->sibs && b->sibs) {
-            treeCompare(a->sibs, b->sibs); 
+            if (treeCompare(a->sibs, b->sibs)) {return true;} else {return false;}
         }
         if (a->kids && b->kids) {
-            treeCompare(a->kids, b->kids); 
+            if (treeCompare(a->kids, b->kids)) {return true;} else {return false;}
         }
         return true; 
     }
