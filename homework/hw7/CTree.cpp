@@ -170,10 +170,10 @@ std::ostream& operator<<(std::ostream& os, CTree& node) {
 bool CTree::treeCompare(const CTree *a, const CTree *b) const {
     if (a->data == b->data) {
         if (a->sibs && b->sibs) {
-            treeCompare(a->sibs, b->sibs); 
+            if (treeCompare(a->sibs, b->sibs)) {return true;} else {return false;}
         }
         if (a->kids && b->kids) {
-            treeCompare(a->kids, b->kids); 
+            if (treeCompare(a->kids, b->kids)) {return true;} else {return false;}
         }
         return true; 
     }
