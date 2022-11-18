@@ -27,11 +27,11 @@ public:
     static void testConstructor() {
         // build a few trees with constructor
         CTree* t1 = new CTree('A');
-        //assert(t1->toString() == "A\n");
+        assert(t1->toString() == "A\n");
         CTree* t2 = new CTree('b'); 
-        //assert(t2->toString() == "b\n");
+        assert(t2->toString() == "b\n");
         CTree* t3 = new CTree('^');
-        //assert(t3->toString() == "^\n");
+        assert(t3->toString() == "^\n");
 	delete t1;
 	delete t2;
 	delete t3;
@@ -56,47 +56,40 @@ public:
   static void testAdd() {
     // A
     CTree* t1 = new CTree('A') ;
-    t1->printData(); 
-    //assert(t1->toString() == "A\n");
+    assert(t1->toString() == "A\n");
 
     // A
     // |
     // b
-    assert(t1->addChild('b'));
-
     
-    t1->kids->printData(); 
-    //assert(t1->toString() == "A\nb\n");
+    assert(t1->addChild('b'));
+    assert(t1->toString() == "A\nb\n");
     // can't add again
-    //assert(!t1->addChild('b'));
-    //assert(t1->toString() == "A\nb\n");
-
+    assert(!t1->addChild('b'));
+    assert(t1->toString() == "A\nb\n");
+  
     // A
     // |
     // b - c
-    /*
+    
     assert(t1->addChild('c'));
-    t1->kids->sibs->printData(); 
-    //assert(t1->toString() == "A\nb\nc\n");
-    // can't add again
+    assert(t1->toString() == "A\nb\nc\n");
     assert(!t1->addChild('c'));
-    t1->kids->sibs->printData(); 
-    //assert(t1->toString() == "A\nb\nc\n");
-    */
-    delete t1;   
-    /* 
+    assert(t1->toString() == "A\nb\nc\n"); 
+    
     // A
     // |
     // B - b - c
-    assert(t1->addChild('B'));
+    assert(t1->addChild('B')); 
     // 'B' comes before 'b'
+    cout << t1->toString() << endl; 
     assert(t1->toString() == "A\nB\nb\nc\n");
     // can't add repeats
     assert(!t1->addChild('B'));
     assert(!t1->addChild('b'));
     assert(!t1->addChild('c'));
     assert(t1->toString() == "A\nB\nb\nc\n");
-
+    
     
     // can't add 'A' as sibling of 'A'
     assert(!t1->addSibling('A'));
@@ -108,7 +101,7 @@ public:
     
     
 
-    
+    /*
     // Adding in an already built subTree
     // First build another tree
     // R
