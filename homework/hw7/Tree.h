@@ -6,7 +6,7 @@
 #include <string>
 
 // tree of characters, can be used to implement a trie
-template<class T>
+template<typename T>
 class Tree {
   friend class TTreeTest;
   
@@ -21,7 +21,6 @@ class Tree {
                  // this should always be null if the object is the root of a tree
 
  public:
-  friend std::ostream& operator<<(std::ostream& os, Tree<T>& rt);
   Tree(T val, Tree<T> *k = NULL, Tree<T> *s = NULL, Tree<T> *p = NULL): data(val), kids(k), sibs(s), prev(p) {}; 
 
   ~Tree();  // clear siblings to right and children and this node

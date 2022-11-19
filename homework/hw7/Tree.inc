@@ -11,8 +11,12 @@ using std::string;
 //Destructor
 template <typename T>
 Tree<T>::~Tree() {
-    delete sibs;
-    delete kids;  
+    if (!sibs) {
+        delete sibs; 
+    }
+    if (!kids){
+        delete kids; 
+    }
 }
 
 template <typename T>
