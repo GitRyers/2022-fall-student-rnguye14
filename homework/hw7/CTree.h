@@ -25,8 +25,6 @@ class CTree {
   CTree(char ch, CTree * k = NULL, CTree * s = NULL, CTree * p = NULL): data(ch), kids(k), sibs(s), prev(p) {}; 
 
   ~CTree();  // clear siblings to right and children and this node
-
-  void printData() {std::cout << data << std::endl;}; 
   
   CTree& operator+(CTree& rt);  //^ operator to do the same thing as addChild
   bool operator==(const CTree &root); // return true if two CTrees match node by node

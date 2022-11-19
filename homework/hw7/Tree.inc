@@ -1,6 +1,8 @@
 #include "Tree.h"
 #include <iostream>
 #include <string> 
+#include <typeinfo>
+#include <sstream>
 
 using std::cout;
 using std::endl; 
@@ -8,24 +10,24 @@ using std::string;
 
 //Destructor
 template <typename T>
-CTree<T>::~CTree() {
+Tree<T>::~Tree() {
     delete sibs;
     delete kids;  
 }
 
 template <typename T>
-CTree<T>& CTree<T>::operator+(CTree<T>& rt) {
+Tree<T>& Tree<T>::operator+(Tree<T>& rt) {
     addChild(&rt);
     return *this;  
 }
 
 template <typename T>
-bool CTree<T>::operator==(const CTree<T> &root) {
+bool Tree<T>::operator==(const Tree<T> &root) {
     return treeCompare(this, &root); 
 }
 
 template <typename T>
-int CTree<T>::checkUniq(T val, CTree<T> * node) {
+int Tree<T>::checkUniq(T val, Tree<T> * node) {
     int count = 0;  
     if (node->data != val) { 
         if (node->sibs != NULL) { 
@@ -39,14 +41,14 @@ int CTree<T>::checkUniq(T val, CTree<T> * node) {
 }
 
 template <typename T>
-bool CTree<T>::addChild(T val) {
+bool Tree<T>::addChild(T val) {
     if (kids) {
         if (checkUniq(val, kids) == 0) {
-            CTree<T> *cur = kids;
+            Tree<T> *cur = kids;
             while (cur) {
                 if (val > cur->data) {
                     if (cur->sibs == NULL) {
-                        cur->sibs = new CTree(val, NULL, NULL, cur); 
+                        cur->sibs = new Tree<T>(val, NULL, NULL, cur); 
                         break; 
                     }
                     else {
@@ -54,7 +56,7 @@ bool CTree<T>::addChild(T val) {
                     }
                 }
                 else {
-                    CTree<T> *node = new CTree(val, NULL, cur, cur->prev); 
+                    Tree<T> *node = new Tree<T>(val, NULL, cur, cur->prev); 
                     if (cur->prev->kids == cur) {
                         cur->prev->kids = node; 
                     }
@@ -72,17 +74,17 @@ bool CTree<T>::addChild(T val) {
         }
     }
     else {
-        kids = new CTree(val, NULL, NULL, this); 
+        kids = new Tree<T>(val, NULL, NULL, this); 
         return true; 
     }
 }
 
 template <typename T>
-bool CTree<T>::addChild(CTree<T> *root) {
+bool Tree<T>::addChild(Tree<T> *root) {
     if (!root->prev||!root->sibs) {
         if (kids) {
             if (checkUniq(root->data, kids) == 0) {
-                CTree<T> *cur = kids;
+                Tree<T> *cur = kids;
                 while (cur) {
                     if (root->data > cur->data) {
                         if (cur->sibs == NULL) {
@@ -124,10 +126,11 @@ bool CTree<T>::addChild(CTree<T> *root) {
     }
 }
 
-string CTree<T>::toString() {
-    string str;
-    str.push_back(data); 
-    str.push_back('\n'); 
+template <typename T>
+string Tree<T>::toString() {
+    std::stringstream ss;
+    ss << data << endl;  
+    std::string str = ss.str(); 
     if (kids) {
         str = str + kids->toString(); 
     } 
@@ -138,10 +141,10 @@ string CTree<T>::toString() {
 }
 
 template <typename T>
-bool CTree<T>::addSibling(T val) {
+bool Tree<T>::addSibling(T val) {
     if (prev) {
         if (checkUniq(val, this) == 0) {
-            sibs = new CTree(val, NULL, NULL, this); 
+            sibs = new Tree<T>(val, NULL, NULL, this); 
             return true; 
         }
         else {
@@ -154,7 +157,7 @@ bool CTree<T>::addSibling(T val) {
 }
 
 template <typename T>
-bool CTree<T>::addSibling(CTree<T> *root){
+bool Tree<T>::addSibling(Tree<T> *root){
     if (prev) {
         if (checkUniq(root->data, this) == 0) {
             sibs = root;
@@ -171,13 +174,13 @@ bool CTree<T>::addSibling(CTree<T> *root){
 }
 
 template <typename U>
-std::ostream& operator<<(std::ostream& os, CTree<U>& node) {
+std::ostream& operator<<(std::ostream& os, Tree<U>& node) {
     os << node.toString(); 
     return os; 
 }
 
 template <typename T>
-bool CTree<T>::treeCompare(const CTree<T> *a, const CTree<T> *b) const {
+bool Tree<T>::treeCompare(const Tree<T> *a, const Tree<T> *b) const {
     if (a->data == b->data) {
         if (a->sibs && b->sibs) {
             if (treeCompare(a->sibs, b->sibs)) {return true;} else {return false;}
