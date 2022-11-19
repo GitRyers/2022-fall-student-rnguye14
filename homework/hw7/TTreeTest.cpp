@@ -194,12 +194,11 @@ public:
     assert(t1->addChild("joanne"));
     assert(t1->addChild("peter"));
     
-    
     Tree<string>* t2 = new Tree<string>("ali");
     assert(t2->addChild("sara"));
     assert(t2->addChild("joanne"));
     assert(t2->addChild("peter"));
-    
+
     assert (*t1 == *t2);
 
     Tree<int>* t3 = new Tree<int>(1);
@@ -209,7 +208,7 @@ public:
     Tree<int>* t4 = new Tree<int>(1);
     assert(t4->addChild(3));
     assert (!(*t3 == *t4));
-    
+
     delete t1;
     delete t2;
     delete t3;
