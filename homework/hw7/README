@@ -2,3 +2,8 @@ Name: Ryan Nguyen
 JHED: rnguye14
 
 Reasoning: 
+I made a separate checkUniq function in order to avoid duplicates. This recursively counted
+the number of instances of a data value, and if it was greater than 0, it would not be added.
+Otherwise, I merely defined every other given function in the file header mostly through recursive
+methods with the exception of the addChild and addSibling functions, which mandated that I parsed
+through the tree and determine from there if conditions were correct for adding a new node.  
