@@ -11,12 +11,8 @@ using std::string;
 //Destructor
 template <typename T>
 Tree<T>::~Tree() {
-    if (!sibs) {
-        delete sibs; 
-    }
-    if (!kids){
-        delete kids; 
-    }
+    delete sibs; 
+    delete kids; 
 }
 
 template <typename T>
@@ -116,6 +112,7 @@ bool Tree<T>::addChild(Tree<T> *root) {
                 return true; 
             }
             else {
+                delete root;
                 return false; 
             }
         }
@@ -126,6 +123,7 @@ bool Tree<T>::addChild(Tree<T> *root) {
         }
     }  
     else {
+        delete root;
         return false; 
     }
 }
@@ -133,7 +131,7 @@ bool Tree<T>::addChild(Tree<T> *root) {
 template <typename T>
 string Tree<T>::toString() {
     std::stringstream ss;
-    ss << data << endl;  
+    ss << data << "\n";   
     std::string str = ss.str(); 
     if (kids) {
         str = str + kids->toString(); 
@@ -169,10 +167,12 @@ bool Tree<T>::addSibling(Tree<T> *root){
             return true; 
         }
         else {
+            delete root;
             return false; 
         }
     }
     else {
+        delete root;
         return false; 
     }
 }
