@@ -7,6 +7,9 @@
 /* Collect integers from a file; store them in a vector */
 std::vector<int> readFile(char* filename) {
   std::ifstream fin(filename);
+  if (!fin.is_open()){
+    throw std::ios_base::failure("ERROR: invalid file name!\n"); 
+  }
   std::vector<int> numbers(10);
 
   int n = 0;
@@ -20,18 +23,13 @@ std::vector<int> readFile(char* filename) {
       throw std::invalid_argument("File contains non-integer data!\n");
     }
     // otherwise, just add it into the vector
-    try {
-      numbers.at(index) = n;
-      index++;
-    } catch(const std::out_of_range& e) {
-      std::cout << "Error: accessing numbers that are out of range" << std::endl; 
-    }
+    numbers.at(index) = n;
+    index++;
   }
 
   throw std::logic_error("ERROR: should never get here!");
   return numbers;
 }
-
 
 int main(int argc, char **argv) {
   if (argc < 2) {
@@ -40,7 +38,18 @@ int main(int argc, char **argv) {
   }
 
   std::vector<int> numbers;
-  numbers = readFile(argv[1]);
+  try {
+    numbers = readFile(argv[1]);
+  }
+  catch(const std::out_of_range& e) {
+    std::cout << "Exception: too many integers were provided" << std::endl; 
+  }
+  catch(const std::ios_base::failure& e) {
+    std::cout << "Exception: invalid file name" << std::endl; 
+  }
+  catch (const std::invalid_argument& e) {
+    std::cout << "Exception: file contains non-integer data" << std::endl; 
+  }
 
   std::cout << "Read numbers: ";
   for(int &i : numbers) {
