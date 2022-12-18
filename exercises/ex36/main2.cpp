@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream& os, MyList<T>& list) {
     // un-commenting the following line and re-running.  
     // You should see the list change.
 
-    //(*it)++;
+    (*it)++;
   }
 
   return os;
